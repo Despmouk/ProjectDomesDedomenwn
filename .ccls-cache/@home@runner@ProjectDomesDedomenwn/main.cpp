@@ -14,10 +14,16 @@
 using namespace std;
 
 int main() { 
-  Maxheap maxh("inputMaxheap.txt");
-  Avltree avlt("inputAvltree.txt");
-  Graph gra("inputGraph.txt");
-  Hashtable hash("inputHashtable.txt");
+  std::string filename1 = "inputMinheap.txt";
+  Minheap minh(filename1);
+  std::string filename2 = "inputMaxheap.txt";
+  Maxheap maxh(filename2);
+  std::string filename3 = "inputAvltree.txt";
+  Avltree avlt(filename3);
+  std::string filename4 = "inputGraph.txt";
+  Graph gra(filename4);
+  std::string filename5 = "inputHashtable.txt";
+  Hashtable hash(filename5);
   ifstream inf; // Δηλώνω ένα ρεύμα εισόδου inf
   ofstream outf; // Δηλώνω ένα ρεύμα εξόδου outf
   char s[50];
@@ -30,7 +36,7 @@ int main() {
         if (strcmp(s, "BUILD MINHEAP filename")==0)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          Minheap minh("inputMinheap.txt");
+          Minheap minh(filename1);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
           outf << "Ο σωρός ελαχίστων χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
