@@ -1,6 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <cstring>
+#include <string>
+#include <chrono>
+#include <stdexcept>
 #include "Minheap.h"
 #include "Maxheap.h"
 #include "Avltree.h"
@@ -10,46 +14,50 @@
 using namespace std;
 
 int main() { 
-  //Δημιουργία αντικειμένων.
-  Minheap minh;
-  Maxheap maxh;
-  Avltree avlt;
-  Graph gra;
-  Hashtable hash;
-  ifstream inf;
+  Maxheap maxh("inputMaxheap.txt");
+  Avltree avlt("inputAvltree.txt");
+  Graph gra("inputGraph.txt");
+  Hashtable hash("inputHashtable.txt");
+  ifstream inf; // Δηλώνω ένα ρεύμα εισόδου inf
+  ofstream outf; // Δηλώνω ένα ρεύμα εξόδου outf
   char s[50];
-  //Ανοιγμα αρχείου για ανάγνωση.
-  string filename;
-  filename = "commands.txt";
-  inf.open(filename);
-  if (inf.is_open())
+  inf.open("commands.txt"); // Άνοιγμα αρχείου "commands.txt" για ανάγνωση
+  outf.open("output.txt"); // Άνοιγμα αρχείου "output.txt" για εγγραφή
+  if (inf.is_open() && outf.is_open())
   {
     while (inf.getline(s, 50))
-      cout<< s << endl;
       {
-        if (strcmp(s, "BUILD MINHEAP input_minheap.txt")==0)
+        if (strcmp(s, "BUILD MINHEAP filename")==0)
+        {
+          auto start = std::chrono::high_resolution_clock::now();
+          Minheap minh("inputMinheap.txt");
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο σωρός ελαχίστων χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+        }
+        else if (strcmp(s, "BUILD MAXHEAP filename")==0)
         {
           
         }
-        else if (strcmp(s, "BUILD MAXHEAP input_maxheap.txt")==0)
+        else if (strcmp(s, "BUILD AVLTREE filename")==0)
         {
           
         }
-        else if (strcmp(s, "BUILD AVLTREE input_avltree.txt")==0)
+        else if (strcmp(s, "BUILD GRAPH filename")==0)
         {
           
         }
-        else if (strcmp(s, "BUILD GRAPH input_graph.txt")==0)
-        {
-          
-        }
-        else if (strcmp(s, "BUILD HASHTABLE input_hashtable.txt")==0)
+        else if (strcmp(s, "BUILD HASHTABLE filename")==0)
         {
           
         }
         else if (strcmp(s, "GETSIZE MINHEAP")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το πλήθος των στοιχείων του σωρού ελαχίστων είναι " << minh.getSize();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "GETSIZE MAXHEAP")==0)
         {
@@ -69,7 +77,11 @@ int main() {
         }
         else if (strcmp(s, "FINDMIN MINHEAP")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το ελάχιστο στοιχείο από το σωρό ελαχίστων είναι " << minh.findMin();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "FINDMAX MAXHEAP")==0)
         {
@@ -101,7 +113,11 @@ int main() {
         }
         else if (strcmp(s, "INSERT MINHEAP number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          minh.insert(10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "INSERT MAXHEAP number")==0)
         {
@@ -121,7 +137,11 @@ int main() {
         }
         else if (strcmp(s, "DELETEMIN MINHEAP")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          minh.deleteMin();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο ελάχιστος διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "DELETEMAX MAXHEAP ")==0)
         {
@@ -137,10 +157,10 @@ int main() {
         }
       }
     inf.close();
+    outf.close();
   } 
   else
   {
    cerr << "Could not open file" << endl;   
   }
-  ofstream outf;
 }

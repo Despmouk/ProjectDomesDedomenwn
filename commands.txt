@@ -1,8 +1,8 @@
-BUILD MINHEAP input_minheap.txt
-BUILD MAXHEAP input_maxheap.txt
-BUILD AVLTREE input_avltree.txt 
-BUILD GRAPH input_graph.txt
-BUILD HASHTABLE input_hashtable.txt
+BUILD MINHEAP filename
+BUILD MAXHEAP filename
+BUILD AVLTREE filename
+BUILD GRAPH filename
+BUILD HASHTABLE filename
 GETSIZE MINHEAP
 GETSIZE MAXHEAP
 GETSIZE AVLTREE
