@@ -43,7 +43,11 @@ int main() {
         }
         else if (strcmp(s, "BUILD MAXHEAP filename")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          Maxheap maxh(filename2);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο σωρός μεγίστων χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "BUILD AVLTREE filename")==0)
         {
@@ -67,7 +71,11 @@ int main() {
         }
         else if (strcmp(s, "GETSIZE MAXHEAP")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το πλήθος των στοιχείων του σωρού μεγίστων είναι " << maxh.getSize();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "GETSIZE AVLTREE")==0)
         {
@@ -91,7 +99,11 @@ int main() {
         }
         else if (strcmp(s, "FINDMAX MAXHEAP")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το μέγιστο στοιχείο από το σωρό μεγίστων είναι " << maxh.findMax();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "FINDMIN AVLTREE")==0)
         {
@@ -127,7 +139,11 @@ int main() {
         }
         else if (strcmp(s, "INSERT MAXHEAP number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          maxh.insert(10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "INSERT AVLTREE number")==0)
         {
@@ -151,7 +167,11 @@ int main() {
         }
         else if (strcmp(s, "DELETEMAX MAXHEAP ")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          maxh.deleteMax();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο μέγιστος διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "DELETE AVLTREE number")==0)
         {
@@ -167,6 +187,6 @@ int main() {
   } 
   else
   {
-   cerr << "Could not open file" << endl;   
+   cerr << "Δεν μπόρεσε να ανοίξει το αρχείο" << endl;   
   }
 }

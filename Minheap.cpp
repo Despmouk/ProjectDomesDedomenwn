@@ -17,15 +17,12 @@ void Minheap::heapifyUp(int index) {
 void Minheap::heapifyDown(int index) {
     int size = heap.size();
     int smallest = index;
-
     int left = 2 * index + 1;
     int right = 2 * index + 2;
-
     if (left < size && heap[left] < heap[smallest])
         smallest = left;
     if (right < size && heap[right] < heap[smallest])
         smallest = right;
-
     if (smallest != index) {
         std::swap(heap[index], heap[smallest]);
         heapifyDown(smallest);
@@ -47,21 +44,20 @@ int Minheap::getSize() {
 
 int Minheap::findMin() {
     if (heap.empty())
-        throw std::runtime_error("Heap is empty");
+        throw std::runtime_error("Η σωρός είναι άδεια");
     return heap[0];
 }
 
-void Minheap::insert(int number) {
-    heap.push_back(number);
+void Minheap::insert(int value) {
+    heap.push_back(value);
     heapifyUp(heap.size() - 1);
 }
 
 void Minheap::deleteMin() {
     if (heap.empty())
-        throw std::runtime_error("Heap is empty");
+        throw std::runtime_error("Η σωρός είναι άδεια");
     heap[0] = heap.back();
     heap.pop_back();
-    if (!heap.empty()) {
+    if (!heap.empty()) 
         heapifyDown(0);
-    }
 }
