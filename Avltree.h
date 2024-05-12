@@ -14,8 +14,7 @@ class Avltree {
         Node *left;
         Node *right;
         int height;
-
-        Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
+        Node(int k);
     };
 
     Node *root;

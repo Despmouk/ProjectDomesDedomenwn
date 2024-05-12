@@ -5,16 +5,7 @@
 
 using namespace std;
 
-struct Node {
-    int key;
-    Node *left;
-    Node *right;
-    int height;
-
-    Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
-};
-
-Node *root;
+Avltree::Node::Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
 
 int Avltree::height(Node *N) {
     if (N == nullptr)
@@ -26,30 +17,30 @@ int Avltree::max(int a, int b) {
     return (a > b) ? a : b;
 }
 
-Node* Avltree::rightRotate(Node *y) {
+Avltree::Node* Avltree::rightRotate(Node *y) {
     Node *x = y->left;
     Node *T2 = x->right;
 
-    // Perform rotation
+    // Εκτέλεση περιστροφής
     x->right = y;
     y->left = T2;
 
-    // Update heights
+    // Ενημέρωση ύψους
     y->height = max(height(y->left), height(y->right)) + 1;
     x->height = max(height(x->left), height(x->right)) + 1;
 
     return x;
 }
 
-Node* Avltree::leftRotate(Node *x) {
+Avltree::Node* Avltree::leftRotate(Node *x) {
     Node *y = x->right;
     Node *T2 = y->left;
 
-    // Perform rotation
+    // Εκτέλεση περιστροφής
     y->left = x;
     x->right = T2;
 
-    // Update heights
+    // Ενημέρωση ύψους
     x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;
 
@@ -62,15 +53,15 @@ int Avltree::getBalance(Node *N) {
     return height(N->left) - height(N->right);
 }
 
-Node* Avltree::insert(Node* node, int key) {
+Avltree::Node* Avltree::insert(Node* node, int key) {
     if (node == nullptr)
         return(new Node(key));
-
+    
     if (key < node->key)
         node->left = insert(node->left, key);
     else if (key > node->key)
         node->right = insert(node->right, key);
-    else // Duplicate keys not allowed
+    else 
         return node;
 
     node->height = 1 + max(height(node->left), height(node->right));
@@ -92,14 +83,14 @@ Node* Avltree::insert(Node* node, int key) {
     return node;
 }
 
-Node* Avltree::minValueNode(Node* node) {
+Avltree::Node* Avltree::minValueNode(Node* node) {
     Node* current = node;
     while (current->left != nullptr)
         current = current->left;
     return current;
 }
 
-Node* Avltree::deleteNode(Node* root, int key) {
+Avltree::Node* Avltree::deleteNode(Node* root, int key) {
     if (root == nullptr)
         return root;
 
@@ -145,7 +136,7 @@ Node* Avltree::deleteNode(Node* root, int key) {
     return root;
 }
 
-Node* Avltree::search(Node* root, int key) {
+Avltree::Node* Avltree::search(Node* root, int key) {
     if (root == nullptr || root->key == key)
         return root;
     if (root->key < key)
