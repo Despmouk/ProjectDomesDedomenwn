@@ -51,7 +51,11 @@ int main() {
         }
         else if (strcmp(s, "BUILD AVLTREE filename")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          Avltree avlt(filename3);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Το δυαδικό δένδρο αναζήτησης χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "BUILD GRAPH filename")==0)
         {
@@ -79,7 +83,11 @@ int main() {
         }
         else if (strcmp(s, "GETSIZE AVLTREE")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το πλήθος των στοιχείων του δένδρου είναι " << avlt.getSize();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "GETSIZE GRAPH")==0)
         {
@@ -107,11 +115,19 @@ int main() {
         }
         else if (strcmp(s, "FINDMIN AVLTREE")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το ελάχιστο στοιχείο από το δένδρο είναι " << avlt.findMin();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "SEARCH AVLTREE number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          avlt.search(12);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός αναζητήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "SEARCH HASHTABLE number")==0)
         {
@@ -147,7 +163,11 @@ int main() {
         }
         else if (strcmp(s, "INSERT AVLTREE number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          avlt.insert(10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "INSERT HASHTABLE number")==0)
         {
@@ -175,7 +195,11 @@ int main() {
         }
         else if (strcmp(s, "DELETE AVLTREE number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          avlt.deleteAvl(10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Το στοιχείο διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "DELETE GRAPH number1 number2")==0)
         {
