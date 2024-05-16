@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <cstring>
 #include <string>
 #include <chrono>
@@ -63,7 +62,11 @@ int main() {
         }
         else if (strcmp(s, "BUILD HASHTABLE filename")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          Hashtable hash(filename5);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο πίνακας κατακερματισμού χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "GETSIZE MINHEAP")==0)
         {
@@ -95,7 +98,11 @@ int main() {
         }
         else if (strcmp(s, "GETSIZE HASHTABLE")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          outf << "Το πλήθος των στοιχείων του πίνακα είναι " << hash.getSize();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "FINDMIN MINHEAP")==0)
         {
@@ -131,7 +138,11 @@ int main() {
         }
         else if (strcmp(s, "SEARCH HASHTABLE number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          hash.search(12);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός αναζητήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "COMPUTESHORTESTPATH GRAPH number1 number2")==0)
         {
@@ -171,7 +182,11 @@ int main() {
         }
         else if (strcmp(s, "INSERT HASHTABLE number")==0)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          hash.insert(10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
         }
         else if (strcmp(s, "INSERT GRAPH number1 number 2")==0)
         {
