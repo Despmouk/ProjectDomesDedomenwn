@@ -17,7 +17,7 @@ class Maxheap {
 
     void heapifyDown(int index);
 
-public:
+  public:
 
     Maxheap(std::string& filename);
 

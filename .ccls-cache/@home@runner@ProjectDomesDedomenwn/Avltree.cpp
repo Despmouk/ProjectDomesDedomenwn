@@ -167,7 +167,7 @@ int Avltree::getSize() {
 int Avltree::findMin() {
     Node* node = minValueNode(root);
     if (node == nullptr)
-        throw std::runtime_error("The tree is empty.");
+        throw std::runtime_error("Το δέντρο είναι άδειο.");
     return node->key;
 }
 
