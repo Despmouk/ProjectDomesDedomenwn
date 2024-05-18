@@ -2,7 +2,6 @@
 #define MAXHEAP_H
 
 #include <iostream>
-#include <vector>
 #include <fstream>
 #include <stdexcept>
 #include <string>
