@@ -2,34 +2,50 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
-#include <string>
 
 using namespace std;
 
+void Minheap::expandHeap() {
+    int newCapacity = capacity * 2;
+    int* newHeap = new int[newCapacity];
+    for (int i = 0; i < size; i++) {
+        newHeap[i] = heap[i];
+    }
+    delete[] heap;
+    heap = newHeap;
+    capacity = newCapacity;
+}
+
 void Minheap::heapifyUp(int index) {
-    while (index > 0 && heap[(index - 1) / 2] > heap[index]) {
+    while (index != 0 && heap[(index - 1) / 2] > heap[index]) {
         std::swap(heap[(index - 1) / 2], heap[index]);
         index = (index - 1) / 2;
     }
 }
 
 void Minheap::heapifyDown(int index) {
-    int size = heap.size();
-    int smallest = index;
     int left = 2 * index + 1;
     int right = 2 * index + 2;
-    if (left < size && heap[left] < heap[smallest])
+    int smallest = index;
+
+    if (left < size && heap[left] < heap[smallest]) {
         smallest = left;
-    if (right < size && heap[right] < heap[smallest])
+    }
+    if (right < size && heap[right] < heap[smallest]) {
         smallest = right;
+    }
+    
     if (smallest != index) {
         std::swap(heap[index], heap[smallest]);
         heapifyDown(smallest);
     }
 }
 
-Minheap::Minheap(std::string& filename) {
+Minheap::Minheap(std::string& filename) : capacity(10), size(0) {
+    heap = new int[capacity];
     std::ifstream file(filename);
+    if (!file) 
+        throw std::runtime_error("Αποτυχία ανοίγματος αρχείου");
     int number;
     while (file >> number) {
         insert(number);
@@ -37,26 +53,34 @@ Minheap::Minheap(std::string& filename) {
     file.close();
 }
 
+Minheap::~Minheap() {
+    delete[] heap;
+}
+
 int Minheap::getSize() {
-    return heap.size();
+    return size;
 }
 
 int Minheap::findMin() {
-    if (heap.empty())
-        throw std::runtime_error("Η σωρός είναι άδεια");
+    if (size <= 0)
+        throw std::runtime_error("Ο σωρός είναι άδειος");
     return heap[0];
 }
 
 void Minheap::insert(int value) {
-    heap.push_back(value);
-    heapifyUp(heap.size() - 1);
+    if (size == capacity) {
+        expandHeap();
+    }
+    heap[size] = value;
+    heapifyUp(size);
+    size++;
 }
 
 void Minheap::deleteMin() {
-    if (heap.empty())
-        throw std::runtime_error("Η σωρός είναι άδεια");
-    heap[0] = heap.back();
-    heap.pop_back();
-    if (!heap.empty()) 
-        heapifyDown(0);
+    if (size <= 0)
+        throw std::runtime_error("Ο σωρός είναι άδειος");
+    heap[0] = heap[size - 1];
+    size--;
+    heapifyDown(0);
 }
+

@@ -4,13 +4,18 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
-#include <string>
 
 class Maxheap {
 
   private:
 
-    std::vector<int> heap;
+    int* heap;       // Δυναμικός πίνακας για την αποθήκευση των στοιχείων
+    
+    int capacity;    // Χωρητικότητα του σωρού
+    
+    int size;        // Τρέχων αριθμός στοιχείων στο σωρο
+
+    void expandHeap();
 
     void heapifyUp(int index);
 
@@ -19,6 +24,8 @@ class Maxheap {
   public:
 
     Maxheap(std::string& filename);
+
+    ~Maxheap();
 
     int getSize();
 
