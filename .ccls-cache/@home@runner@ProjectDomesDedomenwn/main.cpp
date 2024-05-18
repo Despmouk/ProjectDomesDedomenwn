@@ -76,7 +76,7 @@ int main() {
           Minheap minh(filename1);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο σωρός ελαχίστων χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο σωρός ελαχίστων κατασκευάστηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s2)==1)
         {
@@ -84,7 +84,7 @@ int main() {
           Maxheap maxh(filename2);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο σωρός μεγίστων χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο σωρός μεγίστων κατασκευάστηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s3)==1)
         {
@@ -92,7 +92,7 @@ int main() {
           Avltree avlt(filename3);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Το δυαδικό δένδρο αναζήτησης χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Το δυαδικό δένδρο αναζήτησης κατασκευάστηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s4)==1)
         {
@@ -104,7 +104,7 @@ int main() {
           Hashtable hash(filename5);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο πίνακας κατακερματισμού χτίστηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο πίνακας κατακερματισμού κατασκευάστηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s6)==1)
         {
@@ -112,7 +112,7 @@ int main() {
           outf << "Το πλήθος των στοιχείων του σωρού ελαχίστων είναι " << minh.getSize();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s7)==1)
         {
@@ -120,15 +120,15 @@ int main() {
           outf << "Το πλήθος των στοιχείων του σωρού μεγίστων είναι " << maxh.getSize();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s8)==1)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          outf << "Το πλήθος των στοιχείων του δένδρου είναι " << avlt.getSize();
+          outf << "Το πλήθος των στοιχείων του δυαδικού δένδρου αναζήτησης είναι " << avlt.getSize();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s9)==1)
         {
@@ -137,10 +137,10 @@ int main() {
         else if (sameStrings(s, s10)==1)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          outf << "Το πλήθος των στοιχείων του πίνακα είναι " << hash.getSize();
+          outf << "Το πλήθος των στοιχείων του πίνακα κατακερματισμού είναι " << hash.getSize();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s11)==1)
         {
@@ -148,7 +148,7 @@ int main() {
           outf << "Το ελάχιστο στοιχείο από το σωρό ελαχίστων είναι " << minh.findMin();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s12)==1)
         {
@@ -156,15 +156,15 @@ int main() {
           outf << "Το μέγιστο στοιχείο από το σωρό μεγίστων είναι " << maxh.findMax();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s13)==1)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          outf << "Το ελάχιστο στοιχείο από το δένδρο είναι " << avlt.findMin();
+          outf << "Το ελάχιστο στοιχείο από το δυαδικό δένδρο αναζήτησης είναι " << avlt.findMin();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << " το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s14)==1)
         {
@@ -172,7 +172,10 @@ int main() {
           avlt.search(12);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός αναζητήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          if (avlt.search(12)=="SUCCESS")
+            outf << "Ο αριθμός αναζητήθηκε στο δυαδικό δένδρο σε " << diff.count() << " δευτερόλεπτα και βρέθηκε." << endl;
+          else
+            outf << "Ο αριθμός αναζητήθηκε στο δυαδικό δένδρο σε " << diff.count() << " δευτερόλεπτα αλλά δεν βρέθηκε." << endl;
         }
         else if (sameStrings(s, s15)==1)
         {
@@ -180,7 +183,10 @@ int main() {
           hash.search(12);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός αναζητήθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          if (hash.search(12)=="SUCCESS")
+            outf << "Ο αριθμός αναζητήθηκε στον πίνακα κατακερματισμού σε " << diff.count() << " δευτερόλεπτα και βρέθηκε." << endl;
+          else
+            outf << "Ο αριθμός αναζητήθηκε στον πίνακα κατακερματισμού σε " << diff.count() << " δευτερόλεπτα αλλά δεν βρέθηκε." << endl;
         }
         else if (sameStrings(s, s16)==1)
         {
@@ -200,7 +206,7 @@ int main() {
           minh.insert(10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο αριθμός εισάχθηκε στον σωρό ελαχίστων σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s20)==1)
         {
@@ -208,7 +214,7 @@ int main() {
           maxh.insert(10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο αριθμός εισάχθηκε στον σωρό μεγίστων σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s21)==1)
         {
@@ -216,7 +222,7 @@ int main() {
           avlt.insert(10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο αριθμός εισάχθηκε στο δυαδικό δένδρο αναζήτησης σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s22)==1)
         {
@@ -224,7 +230,7 @@ int main() {
           hash.insert(10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο αριθμός εισάχθηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Ο αριθμός εισάχθηκε στον πίνακα κατακερματισμού σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s23)==1)
         {
@@ -236,7 +242,7 @@ int main() {
           minh.deleteMin();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο ελάχιστος διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Το ελάχιστο στοιχείο διαγράφτηκε από τον σωρό ελαχίστων σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s25)==1)
         {
@@ -244,7 +250,7 @@ int main() {
           maxh.deleteMax();
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Ο μέγιστος διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Το μέγιστο στοιχείο διαγράφτηκε από τον σωρό μεγίστων σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s26)==1)
         {
@@ -252,7 +258,7 @@ int main() {
           avlt.deleteAvl(10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
-          outf << "Το στοιχείο διαγράφτηκε σε " << diff.count() << " δευτερόλεπτα" << endl;
+          outf << "Το στοιχείο διαγράφτηκε από το δυαδικό δένδρο αναζήτησης σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s27)==1)
         {
