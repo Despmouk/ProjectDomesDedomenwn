@@ -4,6 +4,7 @@
 #include <string>
 #include <chrono>
 #include <stdexcept>
+#include <utility>
 #include "Minheap.h"
 #include "Maxheap.h"
 #include "Avltree.h"
@@ -96,7 +97,11 @@ int main() {
         }
         else if (sameStrings(s, s4)==1)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          Graph gra(filename4);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Το γράφημα κατασκευάστηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s5)==1)
         {
@@ -132,7 +137,12 @@ int main() {
         }
         else if (sameStrings(s, s9)==1)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          auto size = gra.getSize();
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Το πλήθος των κορυφών του γράφου είναι " << size.first << " και το πλήθος των ακμών είναι " << size.second; 
+          outf << ", το οποίο ανακτήθηκε σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s10)==1)
         {
@@ -234,7 +244,11 @@ int main() {
         }
         else if (sameStrings(s, s23)==1)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          gra.addEdge(2,4,10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Η ακμή εισάχθηκε στο γράφημα σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
         else if (sameStrings(s, s24)==1)
         {
@@ -262,7 +276,11 @@ int main() {
         }
         else if (sameStrings(s, s27)==1)
         {
-          
+          auto start = std::chrono::high_resolution_clock::now();
+          gra.removeEdge(2,4,10);
+          auto end = std::chrono::high_resolution_clock::now();
+          std::chrono::duration<double> diff = end - start;
+          outf << "Η ακμή διαγράφτηκε απο το γράφημα σε " << diff.count() << " δευτερόλεπτα." << endl;
         }
       }
     inf.close();
