@@ -67,7 +67,7 @@ class Graph {
             std::istringstream iss(line);
             int node1, node2, weight;
             iss >> node1 >> node2 >> weight;
-            addEdge(node1, node2, weight);
+            insertEdge(node1, node2, weight);
         }
         file.close();
     }
@@ -91,7 +91,7 @@ class Graph {
         return std::make_pair(numVertices, numEdges);
     }
 
-    void addEdge(int node1, int node2, int weight) {
+    void insertEdge(int node1, int node2, int weight) {
         if (!findEdge(node1, node2)) {
             addVertex(node1);
             addVertex(node2);
@@ -102,7 +102,7 @@ class Graph {
         }
     }
 
-    void removeEdge(int node1, int node2, int weight) {
+    void deleteEdge(int node1, int node2, int weight) {
         Vertex* vertex = findVertex(node1);
         if (vertex != nullptr) {
             Edge** edge = &vertex->edgeList;

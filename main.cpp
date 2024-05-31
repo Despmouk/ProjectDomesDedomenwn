@@ -245,7 +245,7 @@ int main() {
         else if (sameStrings(s, s23)==1)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          gra.addEdge(2,4,10);
+          gra.insertEdge(2,4,10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
           outf << "Η ακμή εισάχθηκε στο γράφημα σε " << diff.count() << " δευτερόλεπτα." << endl;
@@ -277,7 +277,7 @@ int main() {
         else if (sameStrings(s, s27)==1)
         {
           auto start = std::chrono::high_resolution_clock::now();
-          gra.removeEdge(2,4,10);
+          gra.deleteEdge(2,4,10);
           auto end = std::chrono::high_resolution_clock::now();
           std::chrono::duration<double> diff = end - start;
           outf << "Η ακμή διαγράφτηκε απο το γράφημα σε " << diff.count() << " δευτερόλεπτα." << endl;
