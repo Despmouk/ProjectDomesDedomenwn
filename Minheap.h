@@ -23,7 +23,10 @@ class Minheap {
 
   public:
 
-    Minheap(std::string& filename);
+    explicit Minheap(const std::string& filename);
+
+    Minheap(const Minheap&) = delete;
+    Minheap& operator=(const Minheap&) = delete;
 
     ~Minheap();
 

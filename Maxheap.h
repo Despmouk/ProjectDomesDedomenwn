@@ -23,7 +23,10 @@ class Maxheap {
 
   public:
 
-    Maxheap(std::string& filename);
+    explicit Maxheap(const std::string& filename);
+
+    Maxheap(const Maxheap&) = delete;
+    Maxheap& operator=(const Maxheap&) = delete;
 
     ~Maxheap();
 

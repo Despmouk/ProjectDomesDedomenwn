@@ -1,36 +1,21 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
-
-#include <iostream>
-#include <fstream>
 #include <string>
 
+// Open-addressed hash table for nonnegative integers. Duplicates are retained.
 class Hashtable {
-
-  private:
-
-    int* table;       // Δυναμικός πίνακας για την αποθήκευση των στοιχείων
-    
-    int capacity;     // Χωρητικότητα του πίνακα
-    
-    int numElements;  // Αριθμός των στοιχείων του πίνακα
-
-    int hashFunction(int number);
-
+    int* table;
+    int capacity;
+    int numElements;
+    int hashFunction(int number) const;
     void resize();
-
-  public:
-
-    Hashtable(std::string& filename);
-
+public:
+    explicit Hashtable(const std::string& filename);
     ~Hashtable();
-
-    int getSize();
-
-    std::string search(int number);
-
+    Hashtable(const Hashtable&) = delete;
+    Hashtable& operator=(const Hashtable&) = delete;
+    int getSize() const;
+    std::string search(int number) const;
     void insert(int number);
-
 };
-
-#endif //HASHTABLE_H
+#endif

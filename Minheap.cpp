@@ -2,10 +2,14 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <limits>
+#include <utility>
 
 using namespace std;
 
 void Minheap::expandHeap() {
+    if (capacity > std::numeric_limits<int>::max() / 2)
+        throw std::overflow_error("Heap capacity is too large");
     int newCapacity = capacity * 2;
     int* newHeap = new int[newCapacity];
     for (int i = 0; i < size; i++) {
@@ -41,16 +45,15 @@ void Minheap::heapifyDown(int index) {
     }
 }
 
-Minheap::Minheap(std::string& filename) : capacity(10), size(0) {
+Minheap::Minheap(const std::string& filename) : heap(nullptr), capacity(10), size(0) {
+    std::ifstream file(filename.c_str());
+    if (!file) throw std::runtime_error("Cannot open " + filename);
     heap = new int[capacity];
-    std::ifstream file(filename);
-    if (!file) 
-        throw std::runtime_error("Αποτυχία ανοίγματος αρχείου");
-    int number;
-    while (file >> number) {
-        insert(number);
-    }
-    file.close();
+    try {
+        int number;
+        while (file >> number) insert(number);
+        if (!file.eof()) throw std::runtime_error("Invalid integer in " + filename);
+    } catch (...) { delete[] heap; throw; }
 }
 
 Minheap::~Minheap() {
@@ -68,6 +71,7 @@ int Minheap::findMin() {
 }
 
 void Minheap::insert(int value) {
+    if (value < 0) throw std::invalid_argument("Values must be nonnegative");
     if (size == capacity) {
         expandHeap();
     }

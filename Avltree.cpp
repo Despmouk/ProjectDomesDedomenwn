@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -84,6 +85,7 @@ Avltree::Node* Avltree::insert(Node* node, int key) {
 }
 
 Avltree::Node* Avltree::minValueNode(Node* node) {
+    if (node == nullptr) return nullptr;
     Node* current = node;
     while (current->left != nullptr)
         current = current->left;
@@ -152,13 +154,26 @@ int Avltree::size(Node* node) {
 
 Avltree::Avltree() : root(nullptr) {}
 
-Avltree::Avltree(std::string& filename) : Avltree() {
-    std::ifstream file(filename);
-    int key;
-    while (file >> key) {
-        root = insert(root, key);
-    }
+Avltree::Avltree(const std::string& filename) : Avltree() {
+    std::ifstream file(filename.c_str());
+    if (!file) throw std::runtime_error("Cannot open " + filename);
+    try {
+        int key;
+        while (file >> key) {
+            if (key < 0) throw std::invalid_argument("Values must be nonnegative");
+            root = insert(root, key);
+        }
+        if (!file.eof()) throw std::runtime_error("Invalid integer in " + filename);
+    } catch (...) { destroy(root); root = nullptr; throw; }
 }
+
+void Avltree::destroy(Node* node) {
+    if (!node) return;
+    destroy(node->left);
+    destroy(node->right);
+    delete node;
+}
+Avltree::~Avltree() { destroy(root); }
 
 int Avltree::getSize() {
     return size(root);
@@ -177,6 +192,7 @@ std::string Avltree::search(int key) {
 }
 
 void Avltree::insert(int key) {
+    if (key < 0) throw std::invalid_argument("Values must be nonnegative");
     root = insert(root, key);
 }
 

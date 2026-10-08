@@ -19,6 +19,8 @@ class Avltree {
 
     Node *root;
 
+    void destroy(Node* node);
+
     int height(Node *N);
 
     int max(int a, int b);
@@ -43,7 +45,12 @@ class Avltree {
 
     Avltree();
 
-    Avltree(std::string& filename);
+    explicit Avltree(const std::string& filename);
+
+    ~Avltree();
+
+    Avltree(const Avltree&) = delete;
+    Avltree& operator=(const Avltree&) = delete;
 
     int getSize();
 
