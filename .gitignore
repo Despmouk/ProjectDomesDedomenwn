@@ -1,0 +1,25 @@
+# Build outputs and generated results
+/build/
+/output.txt
+*.o
+*.d
+*.exe
+/main
+/main-debug
+/data-structures
+
+# Editor caches and local settings
+/.ccls-cache/
+/.cache/
+/.vscode/
+/.idea/
+*.swp
+*~
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Original coursework PDFs may contain student numbers
+/TexnikiEkthesi.pdf
+/ΕκφώνησηΔομΔεδομ2024.pdf
